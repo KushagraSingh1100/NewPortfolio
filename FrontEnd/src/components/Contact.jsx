@@ -10,7 +10,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = { name, email, message };
-    const response = await fetch(`${import.meta.env.BACKEND_URL}/contact`, {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/contact`, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
