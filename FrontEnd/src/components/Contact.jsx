@@ -7,10 +7,15 @@ const Contact = () => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState(null);
   const [sent, setSent] = useState(false);
+  const backendUrl =
+    window.VITE_BACKEND_URL ||
+    import.meta.env.VITE_BACKEND_URL ||
+    "http://localhost:4000";
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(backendUrl);
     const data = { name, email, message };
-    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/contact`, {
+    const response = await fetch(`${backendUrl}/contact`, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
