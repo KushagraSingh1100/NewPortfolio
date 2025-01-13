@@ -6,14 +6,16 @@ const Message = require("./model/messageModel");
 
 const app = express();
 app.use(express.json());
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
+const cors = require("cors");
+
+app.use(
+  cors({
+    origin: "https://new-portfolio-rkre.vercel.app",
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
+
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
