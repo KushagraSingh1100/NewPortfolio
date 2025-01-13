@@ -12,7 +12,7 @@ const Contact = () => {
     const backendUrl = process.env.REACT_APP_BACKEND_URL;
     console.log(backendUrl);
     const data = { name, email, message };
-    const response = await fetch(`/contact`, {
+    const response = await fetch(`${REACT_APP_BACKEND_URL}/contact`, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
